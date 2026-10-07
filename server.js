@@ -6,6 +6,8 @@ const cors = require('cors');
 const helmet = require('helmet');
 const { rateLimit } = require('express-rate-limit');
 const { db } = require('./database/db');
+const { installResendTransport } = require('./services/resend-transport');
+installResendTransport();
 const authRoutes = require('./routes/auth');
 const { router: recordRoutes } = require('./routes/records');
 const importRoutes = require('./routes/imports');
@@ -21,6 +23,8 @@ if (String(process.env.BOOTSTRAP_ADMIN_EMAIL || '').trim() && !/^[^@\s]+@gmail\.
 if (!String(process.env.BOOTSTRAP_ADMIN_EMAIL || '').trim()) console.warn('BOOTSTRAP_ADMIN_EMAIL is empty. New registrations will remain pending until an administrator account is configured.');
 
 const app = express();
+app.set('trust proxy', 1);
+app.set('trust proxy', 1);
 const port = Number(process.env.PORT || 3000);
 const host = process.env.HOST || (process.env.NODE_ENV === 'production' ? '0.0.0.0' : '127.0.0.1');
 const publicDir = path.join(__dirname, 'public');

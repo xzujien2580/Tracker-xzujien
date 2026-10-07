@@ -48,7 +48,9 @@ The database is created at `data/etairos.sqlite` by default and starts with **ze
 
 ## Email verification
 
-The development server can display a one-time verification code on screen when SMTP is not configured. That behavior is disabled in production. For delivered email, set:
+On Render Free, configure `RESEND_API_KEY` and `RESEND_FROM` to send verification codes through Resend's HTTPS API; this takes priority over SMTP. Verify the sender domain in Resend first. Resend's free tier currently includes 3,000 emails per month with a 100-per-day limit. If the API key is absent, the app continues to use SMTP when configured.
+
+The development server can display a one-time verification code on screen when email delivery is not configured. That behavior is disabled in production. For SMTP-based delivery, set:
 
 - `SMTP_HOST=smtp.gmail.com`
 - `SMTP_PORT=587`

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f4f7fb" />
+  <title>ETAIROS PV-MS Operations Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/modal-scroll.css" />
+  <link rel="stylesheet" href="/layout-fixes.css" />
+</head>
+<body>
+  <main id="authView" class="auth-page">
+    <section class="auth-brand">
+      <div class="brand-mark">E</div>
+      <div class="brand-copy"><strong>ETAIROS</strong><span>PV-MS OPERATIONS</span></div>
+      <div class="auth-brand-content">
+        <div class="eyebrow light"><span class="pulse-dot"></span> FIELD OPERATIONS CONTROL</div>
+        <h1>One clear view<br />from site to closeout.</h1>
+        <p>Track PV and MS progress, coordinate field teams, and keep every project record in one place.</p>
+      </div>
+      <div class="auth-brand-footer"><span>PV + MS PROJECT TRACKING</span><span>SECURE WORKSPACE</span></div>
+    </section>
+    <section class="auth-panel">
+      <div class="auth-mobile-brand"><div class="brand-mark">E</div><div class="brand-copy"><strong>ETAIROS</strong><span>PV-MS OPERATIONS</span></div></div>
+      <div class="auth-card">
+        <div class="auth-heading"><div class="eyebrow">OPERATIONS PORTAL</div><h2 id="authTitle">Welcome back</h2><p id="authSubtitle">Sign in to continue to your workspace.</p></div>
+        <div id="authNotice" class="notice hidden" role="status"></div>
+        <form id="loginForm" class="form-stack">
+          <label>Email address<input name="email" type="email" placeholder="name@gmail.com" autocomplete="username" required /></label>
+          <label>Password<span class="password-wrap"><input name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required /><button class="password-toggle" type="button" aria-label="Show password">Show</button></span></label>
+          <button class="button primary full" type="submit">Sign in <span aria-hidden="true">→</span></button>
+        </form>
+        <form id="signupForm" class="form-stack hidden">
+          <label>Full name<input name="name" placeholder="Your full name" autocomplete="name" required /></label>
+          <label>Gmail address<input name="email" type="email" placeholder="name@gmail.com" autocomplete="email" required /></label>
+          <label>Password<span class="password-wrap"><input name="password" type="password" minlength="8" maxlength="72" placeholder="At least 8 characters" autocomplete="new-password" required /><button class="password-toggle" type="button" aria-label="Show password">Show</button></span></label>
+          <label>Confirm password<input name="confirmPassword" type="password" minlength="8" maxlength="72" placeholder="Re-enter your password" autocomplete="new-password" required /></label>
+          <button id="requestCodeButton" class="button secondary full" type="button">Request verification code</button>
+          <div id="verificationGroup" class="hidden"><label>6-digit verification code<input name="code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="000000" /></label></div>
+          <button id="createAccountButton" class="button primary full hidden" type="submit">Create account <span aria-hidden="true">→</span></button>
+        </form>
+        <div class="auth-divider"><span>OR CONTINUE WITH</span></div>
+        <button id="googleSignIn" class="button google full" type="button"><span class="google-g">G</span> Sign in with Google</button>
+        <p class="auth-switch"><span id="authSwitchCopy">New to the tracker?</span> <button id="authSwitch" type="button">Create an account</button></p>
+        <p class="auth-footnote">Access is granted to verified and approved team members.</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="appShell" class="app-shell hidden">
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-brand"><div class="brand-mark small">E</div><div class="brand-copy"><strong>ETAIROS</strong><span>OPERATIONS</span></div><button id="sidebarClose" class="icon-button sidebar-close" aria-label="Close menu">×</button></div>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav id="sideNav" class="side-nav" aria-label="Main navigation">
+        <button data-page="dashboard" class="nav-item active"><span class="nav-icon">▦</span> Dashboard</button>
+        <button data-page="merged" class="nav-item"><span class="nav-icon">⇄</span> Merged tracker</button>
+        <div class="nav-group-label">DATABASES</div>
+        <button data-page="pv" class="nav-item"><span class="nav-icon pv-icon">P</span> PV database</button>
+        <button data-page="ms" class="nav-item"><span class="nav-icon ms-icon">M</span> MS database</button>
+        <div class="nav-group-label">TOOLS</div>
+        <button data-page="import" class="nav-item"><span class="nav-icon">⇧</span> Excel import</button>
+        <button data-page="reports" class="nav-item"><span class="nav-icon">▤</span> Reports</button>
+        <button data-page="drive" class="nav-item"><span class="nav-icon">◉</span> Google Drive</button>
+        <button data-page="backup" class="nav-item"><span class="nav-icon">⤓</span> Data backup</button>
+        <button data-page="settings" class="nav-item"><span class="nav-icon">⚙</span> Settings</button>
+        <div id="adminNavGroup" class="hidden"><div class="nav-group-label">ADMINISTRATION</div><button data-page="users" class="nav-item"><span class="nav-icon">♙</span> User management <span id="pendingBadge" class="nav-badge hidden">0</span></button></div>
+      </nav>
+      <div class="sidebar-bottom"><div class="sidebar-help"><div class="help-icon">?</div><div><strong>Need a hand?</strong><span>See the setup guide</span></div><a href="/README.md" target="_blank" aria-label="Open setup guide">↗</a></div><div class="sidebar-version">ETAIROS TRACKER <span>v1.0</span></div></div>
+    </aside>
+    <div id="sidebarScrim" class="sidebar-scrim"></div>
+    <section class="main-area">
+      <header class="topbar"><button id="menuButton" class="icon-button menu-button" aria-label="Open menu">☰</button><div class="breadcrumb"><span>Workspace</span><b>/</b><strong id="pageCrumb">Dashboard</strong></div><div class="topbar-actions"><span id="todayLabel" class="today-label"></span><div class="topbar-divider"></div><button id="profileButton" class="profile-button"><span id="profileInitials" class="avatar">U</span><span class="profile-copy"><strong id="profileName">User</strong><small id="profileRole">STAFF</small></span><span class="chevron">⌄</span></button><div id="profileMenu" class="profile-menu hidden"><button id="signOutButton">Sign out</button></div></div></header>
+      <main id="pageContent" class="page-content" tabindex="-1"></main>
+      <footer class="app-footer"><span>ETAIROS PV-MS OPERATIONS TRACKER</span><span id="footerStatus"><i></i> SYSTEM READY</span></footer>
+    </section>
+  </div>
+
+  <div id="modalRoot"></div>
+  <div id="toastRoot" class="toast-stack" aria-live="polite"></div>
+  <script src="/vendor/xlsx.full.min.js"></script>
+  <script src="/config.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

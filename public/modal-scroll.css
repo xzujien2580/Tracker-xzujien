@@ -1,0 +1,50 @@
+/* Keep modal controls visible while long PV/MS forms scroll inside the dialog. */
+.modal {
+  max-height: min(calc(100vh - 36px), 850px);
+  max-height: min(calc(100dvh - 36px), 850px);
+}
+
+.modal form {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.modal-header,
+.modal-footer {
+  flex: 0 0 auto;
+}
+
+.modal-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.clear-confirm-label {
+  display: block;
+  margin: 14px 0 7px;
+  color: #52637a;
+  font-size: 12px;
+}
+
+.clear-confirm-input {
+  width: 100%;
+  min-height: 39px;
+  padding: 8px 10px;
+  border: 1px solid #dfe6ee;
+  border-radius: 7px;
+  color: #334a66;
+}
+
+@media (max-width: 760px) {
+  .modal {
+    max-height: calc(100vh - 16px);
+    max-height: calc(100dvh - 16px);
+  }
+}
